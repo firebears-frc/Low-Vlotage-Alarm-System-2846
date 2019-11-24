@@ -49,31 +49,33 @@ void loop()
     digitalWrite(GL, HIGH);
     lcd.setCursor(12, 1);
     lcd.print("GOOD");
-    delay(5);
+    delay(6);
   }
-  else if (voltage >= 6)
+  else if (voltage >= 7)
   {
     digitalWrite(GL, LOW);
     digitalWrite(RL, LOW);
     digitalWrite(YL, HIGH);
     lcd.setCursor(9, 1);
     lcd.print("WARNING");
-    delay(5);
+    delay(6);
   }
-  else if (voltage < 6)
+  else if (voltage < 7)
   {
     digitalWrite(GL, LOW);
     digitalWrite(YL, LOW);
     digitalWrite(RL, HIGH);
     delay(4000);
-    digitalWrite(RL, LOW);
-    if (voltage < 6)
+    if (voltage >= 7)
+    {
+      digitalWrite(RL, LOW);
+    }
+    else
     {
       lcd.setCursor(9, 1);
       lcd.print("REPLACE");
-      if(voltage < 6)
+      for (int i = 0; i < 100,000,000; i++)
       {
-        for (int i = 0; i < 100,000,000; i++)
         digitalWrite(RL, HIGH);
         for (int i = 0; i < 500; i++)
         {
@@ -84,9 +86,7 @@ void loop()
         }
         digitalWrite(RL, LOW);
         delay(1000);
-
       }
-
     }
   }
 }
