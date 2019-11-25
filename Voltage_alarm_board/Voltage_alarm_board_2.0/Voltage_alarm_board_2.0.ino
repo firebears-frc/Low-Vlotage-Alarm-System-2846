@@ -24,7 +24,7 @@ void loop()
 {
   lcd.clear();
   mid = analogRead(A0);
-  incvoltage = mid / 206.4;
+  incvoltage = mid / 204.6;
   voltage = incvoltage * 4;
   Serial.print(voltage);
   lcd.setCursor(0, 1);
@@ -74,7 +74,7 @@ void loop()
     {
       lcd.setCursor(9, 1);
       lcd.print("REPLACE");
-      for (int i = 0; i < 100,000,000; i++)
+      for (int i = 0; i < 1,000,000,000,000,000; i++)
       {
         digitalWrite(RL, HIGH);
         for (int i = 0; i < 500; i++)
